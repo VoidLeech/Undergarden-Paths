@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ugpaths:block/deepsoil_path"
+    }
+  }
+}

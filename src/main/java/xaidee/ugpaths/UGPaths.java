@@ -7,10 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
-import xaidee.ugpaths.data.UGPBlockStates;
-import xaidee.ugpaths.data.UGPItemModels;
-import xaidee.ugpaths.data.UGPLang;
-import xaidee.ugpaths.data.UGPLootTables;
+import xaidee.ugpaths.data.*;
 
 @Mod(UGPaths.MOD_ID)
 public class UGPaths {
@@ -43,6 +40,7 @@ public class UGPaths {
         }
         if (event.includeServer()) {
             generator.addProvider(new UGPLootTables(generator));
+            generator.addProvider(new UGPBlockTags(generator, helper));
         }
     }
 }
