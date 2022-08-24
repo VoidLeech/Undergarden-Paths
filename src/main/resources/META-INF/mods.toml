@@ -1,0 +1,43 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+issueTrackerURL="https://github.com/xaidee/Undergarden-Paths/issues/"
+license="The MIT License (MIT)"
+
+[[mods]]
+modId="ugpaths"
+version="${file.jarVersion}"
+displayName="Undergarden Paths"
+# updateJSONURL=""
+displayURL="https://www.curseforge.com/minecraft/mc-mods/undergarden-paths"
+logoFile="Undergarden Paths.png"
+logoBlur=false
+itemIcon="ugpaths:deepsoil_path"
+configuredBackground="undergarden:textures/block/deepsoil.png"
+credits='''
+Thanks goes to Quek for creating the amazing Undergarden mod!
+'''
+authors="Xaidee Quartz"
+description='''
+An addon to the Undergarden that adds paths for the dimension's respective dirt/turf types.
+'''
+
+[[dependencies.ugpaths]]
+modId="forge"
+mandatory=true
+versionRange="[40.1.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ugpaths]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18,1.19)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ugpaths]]
+modId="undergarden"
+mandatory=true
+versionRange="[0.6.3,)"
+ordering="AFTER"
+side="BOTH"

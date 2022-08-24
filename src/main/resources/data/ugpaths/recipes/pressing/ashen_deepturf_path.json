@@ -1,0 +1,21 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    [
+      {
+        "item": "undergarden:ashen_deepturf_block"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "item": "ugpaths:ashen_deepturf_path"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+
+{
+  "type": "create:pressing",
+  "ingredients": [
+    [
+      {
+        "item": "undergarden:deepturf_block"
+      },
+      {
+        "item": "undergarden:deepsoil"
+      },
+      {
+        "item": "undergarden:coarse_deepsoil"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "item": "ugpaths:deep_path"
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ]
+}
