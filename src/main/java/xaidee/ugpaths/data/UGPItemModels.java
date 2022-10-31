@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.UGPaths;
 
@@ -28,11 +29,15 @@ public class UGPItemModels extends ItemModelProvider {
         block(UGPRegistry.FROZEN_DEEPTURF_PATH);
     }
 
+    private String blockName(Supplier<? extends Block> block) {
+        return ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+    }
+
     public ItemModelBuilder block(Supplier<? extends Block> block) {
-        return block(block.get(), block.get().getRegistryName().getPath());
+        return block(block.get(), blockName(block));
     }
 
     public ItemModelBuilder block(Block block, String name) {
-        return withExistingParent(block.getRegistryName().getPath(), modLoc("block/" + name));
+        return withExistingParent(blockName(() -> block), modLoc("block/" + name));
     }
 }

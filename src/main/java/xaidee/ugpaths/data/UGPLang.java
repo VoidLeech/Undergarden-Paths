@@ -2,6 +2,8 @@ package xaidee.ugpaths.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
@@ -52,7 +54,7 @@ public class UGPLang implements DataProvider {
     }
 
     @Override
-    public void run(HashCache cache) throws IOException {
+    public void run(CachedOutput cache) throws IOException {
         addTranslations();
         if (!data.isEmpty())
             save(cache, data, this.gen.getOutputFolder().resolve("assets/" + modid + "/lang/" + locale + ".json"));
@@ -63,19 +65,13 @@ public class UGPLang implements DataProvider {
         return "Undergarden Paths' Languages: " + locale;
     }
 
-    public void save(HashCache cache, Object object, Path target) throws IOException {
-        String data = GSON.toJson(object);
-        data = JavaUnicodeEscaper.outsideOf(0, 0x7f).translate(data); // Escape unicode after the fact so that it's not double escaped by GSON
-        String hash = DataProvider.SHA1.hashUnencodedChars(data).toString();
-        if (!Objects.equals(cache.getHash(target), hash) || !Files.exists(target)) {
-            Files.createDirectories(target.getParent());
-
-            try (BufferedWriter bufferedWriter = Files.newBufferedWriter(target)) {
-                bufferedWriter.write(data);
-            }
+    public void save(CachedOutput cache, Object object, Path target) throws IOException {
+        JsonObject json = new JsonObject();
+        for (Map.Entry<String, String> pair : data.entrySet()) {
+            json.addProperty(pair.getKey(), pair.getValue());
         }
 
-        cache.putNew(target, hash);
+        DataProvider.saveStable(cache, json, target);
     }
 
     public void add(String key, String value) {

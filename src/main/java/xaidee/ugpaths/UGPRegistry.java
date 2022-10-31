@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import xaidee.ugpaths.block.DeepsoilPathBlock;
 
 import java.util.function.Supplier;
@@ -24,7 +24,7 @@ public class UGPRegistry {
 
     private static <B extends Block> RegistryObject<B> register(String name, Supplier<? extends B> block) {
         RegistryObject<B> blocks = BLOCKS.register(name, block);
-        ITEMS.register(name, () -> new BlockItem(blocks.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
+        ITEMS.register(name, () -> new BlockItem(blocks.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
         return blocks;
     }
 }

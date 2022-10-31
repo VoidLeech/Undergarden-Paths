@@ -2,10 +2,10 @@ package xaidee.ugpaths;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import xaidee.ugpaths.data.*;
 
@@ -34,13 +34,13 @@ public class UGPaths {
         ExistingFileHelper helper = event.getExistingFileHelper();
 
         if (event.includeClient()) {
-            generator.addProvider(new UGPBlockStates(generator, helper));
-            generator.addProvider(new UGPItemModels(generator, helper));
-            generator.addProvider(new UGPLang(generator));
+            generator.addProvider(true, new UGPBlockStates(generator, helper));
+            generator.addProvider(true, new UGPItemModels(generator, helper));
+            generator.addProvider(true, new UGPLang(generator));
         }
         if (event.includeServer()) {
-            generator.addProvider(new UGPLootTables(generator));
-            generator.addProvider(new UGPBlockTags(generator, helper));
+            generator.addProvider(true, new UGPLootTables(generator));
+            generator.addProvider(true, new UGPBlockTags(generator, helper));
         }
     }
 }

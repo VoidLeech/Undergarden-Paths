@@ -1,0 +1,7 @@
+// 1.19.2	2022-10-31T14:48:35.286549039	Block States: ugpaths
+db3e80513296fe9aaf48928b28fa665f4382ac05 assets/ugpaths/blockstates/ashen_deepturf_path.json
+f2765dd98c0169fe010d06c00367fb82f59d1dbd assets/ugpaths/blockstates/deepsoil_path.json
+97a40f56348f593a83ad829a6aa484fa9ff79785 assets/ugpaths/blockstates/frozen_deepturf_path.json
+65d2c248fdc284d6452e2681ec8e7640b1d66dec assets/ugpaths/models/block/ashen_deepturf_path.json
+3c0c01d57cc83c546976e6af0a7f9b397fd440e0 assets/ugpaths/models/block/deepsoil_path.json
+4e6f204de47b579a10731992af7782f802c59223 assets/ugpaths/models/block/frozen_deepturf_path.json

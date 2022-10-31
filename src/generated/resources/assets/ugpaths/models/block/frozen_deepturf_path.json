@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/dirt_path",
   "textures": {
+    "bottom": "undergarden:block/deepsoil",
     "particle": "undergarden:block/deepsoil",
-    "top": "ugpaths:block/frozen_deepturf_path_top",
     "side": "ugpaths:block/frozen_deepturf_path_side",
-    "bottom": "undergarden:block/deepsoil"
+    "top": "ugpaths:block/frozen_deepturf_path_top"
   }
 }

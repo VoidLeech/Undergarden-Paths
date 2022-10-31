@@ -89,13 +89,13 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
+    //runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
-    implementation fg.deobf("curse.maven:the-undergarden-379849:3810810")
+    implementation fg.deobf("curse.maven:the-undergarden-379849:4057184")
 
-    runtimeOnly fg.deobf("curse.maven:catalogue-459701:3803098")
-    runtimeOnly fg.deobf("curse.maven:configured-457570:3721946")
+   //runtimeOnly fg.deobf("curse.maven:catalogue-459701:3803098")
+    //runtimeOnly fg.deobf("curse.maven:configured-457570:3721946")
 }
 
 jar {

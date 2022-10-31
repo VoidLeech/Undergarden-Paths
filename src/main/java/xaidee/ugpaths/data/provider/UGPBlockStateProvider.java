@@ -3,15 +3,13 @@ package xaidee.ugpaths.data.provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DirtPathBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import quek.undergarden.Undergarden;
+import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.registry.UGBlocks;
 import xaidee.ugpaths.UGPaths;
-import xaidee.ugpaths.block.DeepsoilPathBlock;
 
 import java.util.function.Supplier;
 
@@ -26,7 +24,7 @@ public abstract class UGPBlockStateProvider extends BlockStateProvider {
     }
 
     protected String name(Supplier<? extends Block> block) {
-        return block.get().getRegistryName().getPath();
+        return ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
     }
 
     public ModelFile pathBlockModel(Supplier<? extends Block> block) {
