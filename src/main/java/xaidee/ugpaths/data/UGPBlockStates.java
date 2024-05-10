@@ -1,7 +1,7 @@
 package xaidee.ugpaths.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.data.provider.UGPBlockStateProvider;
 

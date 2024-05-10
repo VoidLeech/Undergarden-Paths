@@ -3,21 +3,17 @@ package xaidee.ugpaths.data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.commons.lang3.text.translate.JavaUnicodeEscaper;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.UGPaths;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Supplier;
 
@@ -84,13 +80,13 @@ public class UGPLang extends LanguageProvider {
 
     public void tryBlock(Supplier<? extends Block> block) {
         String key = block.get().getDescriptionId();
-        String value = formatString(ForgeRegistries.BLOCKS.getKey(block.get()).getPath());
+        String value = formatString(BuiltInRegistries.BLOCK.getKey(block.get()).getPath());
         data.putIfAbsent(key, value);
     }
 
     public void tryItem(Supplier<? extends Item> item) {
         String key = item.get().getDescriptionId();
-        String value = formatString(ForgeRegistries.ITEMS.getKey(item.get()).getPath());
+        String value = formatString(BuiltInRegistries.ITEM.getKey(item.get()).getPath());
         data.putIfAbsent(key, value);
     }
 

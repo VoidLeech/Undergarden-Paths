@@ -3,12 +3,11 @@ package xaidee.ugpaths;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import xaidee.ugpaths.data.*;
 
 import java.util.concurrent.CompletableFuture;
@@ -18,11 +17,10 @@ public class UGPaths {
 
     public static final String MOD_ID = "ugpaths";
 
-    public UGPaths() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    public UGPaths(IEventBus eventBus) {
 
-        bus.addListener(this::gatherData);
-        bus.addListener(UGPRegistry::buildContents);
+        eventBus.addListener(this::gatherData);
+        eventBus.addListener(UGPRegistry::buildContents);
 
         DeferredRegister<?>[] registers = {
                 UGPRegistry.BLOCKS,
@@ -30,7 +28,7 @@ public class UGPaths {
         };
 
         for (DeferredRegister<?> register : registers) {
-            register.register(bus);
+            register.register(eventBus);
         }
     }
 
