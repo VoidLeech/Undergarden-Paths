@@ -3,12 +3,10 @@ package xaidee.ugpaths.data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.HashCache;
+import net.minecraft.data.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.text.translate.JavaUnicodeEscaper;
 import xaidee.ugpaths.UGPRegistry;
@@ -23,15 +21,14 @@ import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Supplier;
 
-public class UGPLang implements DataProvider {
+public class UGPLang extends LanguageProvider {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().setLenient().create();
     private final Map<String, String> data = new TreeMap<>();
-    private final DataGenerator gen;
     private final String modid;
     private final String locale;
 
-    public UGPLang(DataGenerator generator) {
-        this.gen = generator;
+    public UGPLang(PackOutput packOutput) {
+        super(packOutput, UGPaths.MOD_ID, "en_us");
         this.modid = UGPaths.MOD_ID;
         this.locale = "en_us";
     }
@@ -51,13 +48,7 @@ public class UGPLang implements DataProvider {
         for (int i = 0; UGPRegistry.ITEMS.getEntries().size() > i; i++) {
             tryItem(UGPRegistry.ITEMS.getEntries().stream().toList().get(i));
         }
-    }
-
-    @Override
-    public void run(CachedOutput cache) throws IOException {
-        addTranslations();
-        if (!data.isEmpty())
-            save(cache, data, this.gen.getOutputFolder().resolve("assets/" + modid + "/lang/" + locale + ".json"));
+        data.forEach(super::add);
     }
 
     @Override

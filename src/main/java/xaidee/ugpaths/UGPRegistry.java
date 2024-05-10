@@ -4,6 +4,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -24,7 +26,16 @@ public class UGPRegistry {
 
     private static <B extends Block> RegistryObject<B> register(String name, Supplier<? extends B> block) {
         RegistryObject<B> blocks = BLOCKS.register(name, block);
-        ITEMS.register(name, () -> new BlockItem(blocks.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
+        ITEMS.register(name, () -> new BlockItem(blocks.get(), new Item.Properties()));
         return blocks;
+    }
+
+    @SubscribeEvent
+    public static void buildContents(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == UGCreativeModeTabs.TAB.getKey()) {
+            event.accept(DEEPSOIL_PATH);
+            event.accept(ASHEN_DEEPTURF_PATH);
+            event.accept(FROZEN_DEEPTURF_PATH);
+        }
     }
 }

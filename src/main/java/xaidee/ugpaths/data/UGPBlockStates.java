@@ -1,6 +1,6 @@
 package xaidee.ugpaths.data;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.data.provider.UGPBlockStateProvider;
@@ -8,8 +8,8 @@ import xaidee.ugpaths.data.provider.UGPBlockStateProvider;
 public class UGPBlockStates extends UGPBlockStateProvider {
 
 
-    public UGPBlockStates(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, fileHelper);
+    public UGPBlockStates(PackOutput packOutput, ExistingFileHelper fileHelper) {
+        super(packOutput, fileHelper);
     }
 
     @Override
