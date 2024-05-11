@@ -165,9 +165,3 @@ idea {
         downloadJavadoc = true
     }
 }
-
-tasks.withType(Task) {
-    if (it.name == "runServer") {
-        it.standardInput = System.in
-    }
-}
