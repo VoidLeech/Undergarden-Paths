@@ -1,5 +1,6 @@
 package xaidee.ugpaths.data;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.block.Block;
@@ -10,15 +11,16 @@ import xaidee.ugpaths.UGPRegistry;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class UGPLootTables {
 
-    public static LootTableProvider create(PackOutput output){
+    public static LootTableProvider create(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider){
         return new LootTableProvider(output, Set.of(), List.of(
                 new LootTableProvider.SubProviderEntry(Blocks::new, LootContextParamSets.BLOCK)
-        ));
+        ), lookupProvider);
     }
 
     public static class Blocks extends UGBlockLootTableProvider {

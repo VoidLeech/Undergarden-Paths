@@ -4,6 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -17,7 +18,7 @@ public class UGPaths {
 
     public static final String MOD_ID = "ugpaths";
 
-    public UGPaths(IEventBus eventBus) {
+    public UGPaths(IEventBus eventBus, ModContainer modContainer) {
 
         eventBus.addListener(this::gatherData);
         eventBus.addListener(UGPRegistry::buildContents);
@@ -44,7 +45,7 @@ public class UGPaths {
             generator.addProvider(true, new UGPLang(packOutput));
         }
         if (event.includeServer()) {
-            generator.addProvider(true, UGPLootTables.create(packOutput));
+            generator.addProvider(true, UGPLootTables.create(packOutput, lookupProvider));
             generator.addProvider(true, new UGPBlockTags(packOutput, lookupProvider, helper));
         }
     }
