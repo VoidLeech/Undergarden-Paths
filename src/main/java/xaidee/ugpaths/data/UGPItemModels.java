@@ -1,6 +1,6 @@
 package xaidee.ugpaths.data;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -13,8 +13,8 @@ import java.util.function.Supplier;
 
 public class UGPItemModels extends ItemModelProvider {
 
-    public UGPItemModels(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, UGPaths.MOD_ID, helper);
+    public UGPItemModels(PackOutput packOutput, ExistingFileHelper helper) {
+        super(packOutput, UGPaths.MOD_ID, helper);
     }
 
     @Override

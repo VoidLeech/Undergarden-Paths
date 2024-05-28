@@ -1,6 +1,6 @@
 package xaidee.ugpaths.data.provider;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 
 public abstract class UGPBlockStateProvider extends BlockStateProvider {
 
-    public UGPBlockStateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, UGPaths.MOD_ID, fileHelper);
+    public UGPBlockStateProvider(PackOutput packOutput, ExistingFileHelper fileHelper) {
+        super(packOutput, UGPaths.MOD_ID, fileHelper);
     }
 
     protected ResourceLocation texture(String name) {
