@@ -3,35 +3,28 @@ package xaidee.ugpaths.data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.HashCache;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.commons.lang3.text.translate.JavaUnicodeEscaper;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.UGPaths;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Supplier;
 
-public class UGPLang implements DataProvider {
+public class UGPLang extends LanguageProvider {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().setLenient().create();
     private final Map<String, String> data = new TreeMap<>();
-    private final DataGenerator gen;
     private final String modid;
     private final String locale;
 
-    public UGPLang(DataGenerator generator) {
-        this.gen = generator;
+    public UGPLang(PackOutput packOutput) {
+        super(packOutput, UGPaths.MOD_ID, "en_us");
         this.modid = UGPaths.MOD_ID;
         this.locale = "en_us";
     }
@@ -51,13 +44,7 @@ public class UGPLang implements DataProvider {
         for (int i = 0; UGPRegistry.ITEMS.getEntries().size() > i; i++) {
             tryItem(UGPRegistry.ITEMS.getEntries().stream().toList().get(i));
         }
-    }
-
-    @Override
-    public void run(CachedOutput cache) throws IOException {
-        addTranslations();
-        if (!data.isEmpty())
-            save(cache, data, this.gen.getOutputFolder().resolve("assets/" + modid + "/lang/" + locale + ".json"));
+        data.forEach(super::add);
     }
 
     @Override
@@ -93,13 +80,13 @@ public class UGPLang implements DataProvider {
 
     public void tryBlock(Supplier<? extends Block> block) {
         String key = block.get().getDescriptionId();
-        String value = formatString(ForgeRegistries.BLOCKS.getKey(block.get()).getPath());
+        String value = formatString(BuiltInRegistries.BLOCK.getKey(block.get()).getPath());
         data.putIfAbsent(key, value);
     }
 
     public void tryItem(Supplier<? extends Item> item) {
         String key = item.get().getDescriptionId();
-        String value = formatString(ForgeRegistries.ITEMS.getKey(item.get()).getPath());
+        String value = formatString(BuiltInRegistries.ITEM.getKey(item.get()).getPath());
         data.putIfAbsent(key, value);
     }
 
