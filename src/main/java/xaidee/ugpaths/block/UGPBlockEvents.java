@@ -2,16 +2,17 @@ package xaidee.ugpaths.block;
 
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import quek.undergarden.registry.UGBlocks;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.UGPaths;
 
-@Mod.EventBusSubscriber(modid = UGPaths.MOD_ID)
+@EventBusSubscriber(modid = UGPaths.MOD_ID)
 public class UGPBlockEvents {
 
     @SubscribeEvent

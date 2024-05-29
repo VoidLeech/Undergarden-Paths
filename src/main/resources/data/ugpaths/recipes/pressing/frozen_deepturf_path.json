@@ -12,9 +12,9 @@
       "item": "ugpaths:frozen_deepturf_path"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
-      "type": "forge:mod_loaded",
+      "type": "neoforge:mod_loaded",
       "modid": "create"
     }
   ]

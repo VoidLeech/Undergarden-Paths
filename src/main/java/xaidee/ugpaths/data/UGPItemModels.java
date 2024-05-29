@@ -1,11 +1,11 @@
 package xaidee.ugpaths.data;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import xaidee.ugpaths.UGPRegistry;
 import xaidee.ugpaths.UGPaths;
 
@@ -13,8 +13,8 @@ import java.util.function.Supplier;
 
 public class UGPItemModels extends ItemModelProvider {
 
-    public UGPItemModels(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, UGPaths.MOD_ID, helper);
+    public UGPItemModels(PackOutput packOutput, ExistingFileHelper helper) {
+        super(packOutput, UGPaths.MOD_ID, helper);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class UGPItemModels extends ItemModelProvider {
     }
 
     private String blockName(Supplier<? extends Block> block) {
-        return ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+        return BuiltInRegistries.BLOCK.getKey(block.get()).getPath();
     }
 
     public ItemModelBuilder block(Supplier<? extends Block> block) {
