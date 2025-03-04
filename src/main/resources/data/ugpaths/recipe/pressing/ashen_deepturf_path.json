@@ -9,7 +9,9 @@
   ],
   "results": [
     {
-      "item": "ugpaths:ashen_deepturf_path"
+      "item": {
+        "id":"ugpaths:ashen_deepturf_path"
+      }
     }
   ],
   "neoforge:conditions": [

@@ -4,9 +4,8 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.ToolAction;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import quek.undergarden.registry.UGBlocks;
 import xaidee.ugpaths.UGPRegistry;
@@ -17,11 +16,10 @@ public class UGPBlockEvents {
 
     @SubscribeEvent
     public static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
-        ToolAction action = event.getToolAction();
+        ItemAbility action = event.getItemAbility();
         BlockState state = event.getState();
-        UseOnContext ctx = event.getContext();
         if (!event.isSimulated()) {
-            if (action == ToolActions.SHOVEL_FLATTEN) {
+            if (action == ItemAbilities.SHOVEL_FLATTEN) {
                 if (state.is(UGBlocks.DEEPTURF_BLOCK.get()) || state.is(UGBlocks.DEEPSOIL.get()) || state.is(UGBlocks.COARSE_DEEPSOIL.get()))
                     event.setFinalState(UGPRegistry.DEEPSOIL_PATH.get().defaultBlockState());
 

@@ -1,0 +1,30 @@
+
+{
+  "type": "create:pressing",
+  "ingredients": [
+    [
+      {
+        "item": "undergarden:deepturf_block"
+      },
+      {
+        "item": "undergarden:deepsoil"
+      },
+      {
+        "item": {
+          "id":"undergarden:coarse_deepsoil"
+        }
+      }
+    ]
+  ],
+  "results": [
+    {
+      "item": "ugpaths:deepsoil_path"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ]
+}

@@ -24,20 +24,27 @@ An addon to the Undergarden that adds paths for the dimension's respective dirt/
 [[dependencies.ugpaths]]
 modId="neoforge"
 type="required"
-versionRange="[20.6.1-beta,21)"
+versionRange="[21.1.0,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.ugpaths]]
 modId="minecraft"
 type="required"
-versionRange="[1.20.6,1.21)"
+versionRange="[1.21.1,1.21.2)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.ugpaths]]
 modId="undergarden"
 type="required"
-versionRange="[0.8.17,)"
+versionRange="[0.8.22,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.ugpaths]]
+modId="create"
+type="optional"
+versionRange="[6.0.1,)"
+ordering = "NONE"
+side = "BOTH"

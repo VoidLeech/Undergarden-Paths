@@ -1,22 +1,17 @@
-
 {
   "type": "create:pressing",
   "ingredients": [
     [
       {
-        "item": "undergarden:deepturf_block"
-      },
-      {
-        "item": "undergarden:deepsoil"
-      },
-      {
-        "item": "undergarden:coarse_deepsoil"
+        "item": "undergarden:frozen_deepturf_block"
       }
     ]
   ],
   "results": [
     {
-      "item": "ugpaths:deepsoil_path"
+      "item": {
+        "id": "ugpaths:frozen_deepturf_path"
+      }
     }
   ],
   "neoforge:conditions": [

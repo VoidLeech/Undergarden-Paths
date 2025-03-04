@@ -24,7 +24,9 @@ public class UGPLootTables {
     }
 
     public static class Blocks extends UGBlockLootTableProvider {
-        public Blocks() {
+
+        protected Blocks(HolderLookup.Provider provider) {
+            super(provider);
         }
 
         protected void addTables() {
